@@ -31,7 +31,7 @@ Class groups_metadata {
         add_action( 'groups_group_details_edited' , array( $this, 'admin_ui_save_meta'), 10, 1 );
 
         // Add search parameter
-        // add_action( 'bp_before_directory_groups', array( $this, 'new_options' ) );
+        add_action( 'bp_before_directory_groups', array( $this, 'new_options' ) );
         // add_action( 'bp_member_group_order_options', array( $this, 'new_options' ) );
         // add_action( 'bp_groups_directory_order_options', array( $this, 'new_options' ) );
         add_filter( 'bp_ajax_querystring', array( $this, 'filter_ajax_querystring' ), 20, 2 );
