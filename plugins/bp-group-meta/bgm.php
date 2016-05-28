@@ -3,7 +3,7 @@
 Plugin Name: Buddypress groups metadata 
 Plugin URI: http://www.capexpe.org
 Description: Plugin to add and manage metadata on wordpress
-Version: 0.3
+Version: 0.4
 Author: Guillaume Funck	
 License: GPL2
 */
@@ -36,6 +36,9 @@ Class groups_metadata {
         // add_action( 'bp_groups_directory_order_options', array( $this, 'new_options' ) );
         add_filter( 'bp_ajax_querystring', array( $this, 'filter_ajax_querystring' ), 20, 2 );
         add_action( 'bp_groups_directory_order_options', array( $this, 'order_options' ) );
+
+        // Set default cover photo
+        add_filter( "buddyboss_cover_photo_stock_pick_filename", array( $this, 'default_cover_photo' ) );
         
 
 
@@ -349,6 +352,14 @@ Class groups_metadata {
                     <option <?php if ( '' == 'voile') echo ' selected="selected"'; ?> value="voile" >Voile</option>
 
         <?php
+
+    }
+
+    public function default_cover_photo(){
+
+        $category = groups_get_groupmeta( bp_get_group_id(), 'category');
+
+        return $category . '.png';
 
     }
 
