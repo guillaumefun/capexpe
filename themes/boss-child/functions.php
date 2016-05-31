@@ -52,6 +52,20 @@ function boss_child_theme_scripts_styles()
 add_action( 'wp_enqueue_scripts', 'boss_child_theme_scripts_styles', 9999 );
 
 
+// BuddyPress Honeypot to lure spammers
+function add_honeypot() {
+  echo '';
+}
+add_action('bp_after_signup_profile_fields','add_honeypot');
+
+function check_honeypot() {
+  if (!empty($_POST['system55'])) {
+    global $bp; wp_redirect(home_url());
+    exit;
+  }
+}
+add_filter('bp_core_validate_user_signup','check_honeypot');
+
 /****************************** CUSTOM FUNCTIONS ******************************/
 
 // Add your own custom functions here
