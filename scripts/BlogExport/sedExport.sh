@@ -44,7 +44,7 @@ do
   sed 's/<wp:post_type>page</<wp:post_type><![CDATA[gpages]]></g' |
   sed 's/<wp:post_type>post</<wp:post_type><![CDATA[gpages]]></g' |
   # remove beginning of the xml exported files and of the last two lines before concatenation
-  sed '1,57d' |sed '$d' |sed '$d' > "New/$FILE"
+  sed '1,37d' |sed '/<wp:category><wp:term_id>/d' |sed '/<wp:author><wp:author_id>/d' |sed '/<wp:term><wp:term_id>/d' |sed '/<generator>http:/d' |sed '$d' |sed '$d'> "New/$FILE"
 done <$1
 
 param=""
