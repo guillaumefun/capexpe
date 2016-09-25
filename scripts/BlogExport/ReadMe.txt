@@ -10,7 +10,7 @@ This is the folder to iteratively update the .xml file from export before import
 4) start the bash script : "bash ./sedExport.sh ListExportFile.txt" to update the xml files and concatenate them in a single one called "New/concatanedExport.xml"
 5) Edit New/concatanedExport.xml with Oxygen Xml editor
 6) Create a xslt transformation scenario with the "capexpexporttransform.xsl" file.
-7) Transform the concatanedExport.xml (It will remove item with status= draft and title= Album de l'Expe)
+7) Transform the concatanedExport.xml (It will remove item with status= draft and title= Album de l'Expe, ...)
 8) create the new groups/expe
 9) upload the resulting file on the new site
 10) start the scrip to reconnect the child group pages to the root group page
