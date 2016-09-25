@@ -2,11 +2,11 @@
 This is the folder to iteratively update the .xml file from export before importing to new system
 
 1) use "bash ./export.sh" to download all the blog WP export files from capexep.org. All the slug.xml files will be in this directory
-2) in the file "ListExportFile.txt" we should have the list of file names on these xml file plus old_id and New_id separated by seli colon;
-      traversehaukeliseter-finseski.wordpress.2016-05-28.xml;0;100
-      semainealpinedukapexp.wordpress.2016-05-28.xml;0;200
+2) in the file "ListExportFile.txt" we should have the list of file names on these xml file (should be stub.xml), stub, old_id, New_id, titles, subtitles (without ";" in the text) separated by seli colon;
+      haukelister2016.xml;haukeliseter2016;0;100;title;subtitle
+      kappexpe2016.xml;kapexpe2016;0;200;title;subtitle
       ...
-3) The directory New should exist be empty. It will received the updated files
+3) The directory New should exist with the two a_Begin.xml and a_End.xml files. It will received the updated files
 4) start the bash script : "bash ./sedExport.sh ListExportFile.txt" to update the xml files and concatenate them in a single one called "New/concatanedExport.xml"
 5) Edit New/concatanedExport.xml with Oxygen Xml editor
 6) Create a xslt transformation scenario with the "capexpexporttransform.xsl" file.
