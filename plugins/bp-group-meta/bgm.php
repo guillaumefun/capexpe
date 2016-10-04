@@ -276,7 +276,7 @@ Class groups_metadata {
     public function new_options(){
 
         ?>
-        <div class="row filters">
+        <!-- <div class="row filters">
         <div class="col-6">
             <label for="year" >Année de l'expé</label>
             <select name="year" id="year" >
@@ -316,7 +316,7 @@ Class groups_metadata {
                 </select>
 
             </div>
-        </div>
+        </div> -->
 
 
         <?php
