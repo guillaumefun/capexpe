@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: Buddypress groups metadata 
+Plugin Name: Buddypress groups metadata
 Plugin URI: http://www.capexpe.org
 Description: Plugin to add and manage metadata on wordpress
 Version: 0.4
-Author: Guillaume Funck	
+Author: Guillaume Funck
 License: GPL2
 */
 
@@ -39,7 +39,7 @@ Class groups_metadata {
 
         // Set default cover photo
         add_filter( "buddyboss_cover_photo_stock_pick_filename", array( $this, 'default_cover_photo' ) );
-        
+
 
 
     }
@@ -48,12 +48,12 @@ Class groups_metadata {
      * registers a new metabox in Edit Group Administration screen, edit group panel
      */
     public function admin_ui_edit_meta(){
-        add_meta_box( 
-            'groups_metadata_mb', 
-            __(  'Metadata' ), 
-            array( &$this, 'admin_ui_metabox'), 
-            get_current_screen()->id, 
-            'side', 
+        add_meta_box(
+            'groups_metadata_mb',
+            __(  'Metadata' ),
+            array( &$this, 'admin_ui_metabox'),
+            get_current_screen()->id,
+            'side',
             'core'
         );
     }
@@ -64,14 +64,14 @@ Class groups_metadata {
     public function admin_ui_metabox( $item = false ) {
         if( empty( $item ) )
             return;
- 
+
         ?>
             <p>
                 <label for="year" >Année de l'expé</label>
                 <select name="year" id="year" >
                     <?php
 
-                        for ($i=1990; $i < date("Y") + 5 ; $i++) { 
+                        for ($i=1990; $i < date("Y") + 5 ; $i++) {
                             $selected = '';
                             if(groups_get_groupmeta( $item->id, 'year') != '' ){
                                 if(groups_get_groupmeta( $item->id, 'year') == $i) $selected = "selected";
@@ -138,7 +138,7 @@ Class groups_metadata {
 
         $this->save_meta( $group_id, 'year');
         $this->save_meta( $group_id, 'category');
-        
+
     }
 
     public function group_creation_step_meta(){
@@ -153,7 +153,7 @@ Class groups_metadata {
             <select name="year" id="year" >
                 <?php
 
-                    for ($i=1990; $i < date("Y") + 5 ; $i++) { 
+                    for ($i=1990; $i < date("Y") + 5 ; $i++) {
                             $selected = '';
                             if(groups_get_groupmeta( $id, 'year') != '' ){
                                 if(groups_get_groupmeta( $id, 'year') == $i) $selected = "selected";
@@ -241,10 +241,10 @@ Class groups_metadata {
             'exclude'         => false,
         );
         $bpm_querystring = wp_parse_args( $querystring, $defaults );
-        /* if your featured option has not been requested 
+        /* if your featured option has not been requested
         simply return the querystring to stop the process
-        */  
-        if( $bpm_querystring['type'] == 'active' || $bpm_querystring['type'] == 'popular' || $bpm_querystring['type'] == 'newest' || $bpm_querystring['type'] == 'alphabetical') 
+        */
+        if( $bpm_querystring['type'] == 'active' || $bpm_querystring['type'] == 'popular' || $bpm_querystring['type'] == 'newest' || $bpm_querystring['type'] == 'alphabetical')
             return $querystring;
         /* this is your meta_query */
         if(preg_match('/^[0-9]+$/', $bpm_querystring['type'])){
@@ -260,7 +260,7 @@ Class groups_metadata {
 
         }else{
             $bpm_querystring['meta_query'] = array(
-                
+
                 array(
                     'key' => 'category',
                     'value' => $bpm_querystring['type'],
@@ -268,9 +268,9 @@ Class groups_metadata {
                 )
             );
         }
-        
+
         // using a filter will help other plugins to eventually extend this feature
-        return apply_filters( 'bpm_filter_ajax_querystring', $bpm_querystring, $querystring );                  
+        return apply_filters( 'bpm_filter_ajax_querystring', $bpm_querystring, $querystring );
     }
 
     public function new_options(){
@@ -283,7 +283,7 @@ Class groups_metadata {
                     <option >Toutes années</option>
                 <?php
 
-                    for ($i=1990; $i < date("Y") + 5 ; $i++) { 
+                    for ($i=1990; $i < date("Y") + 5 ; $i++) {
                             $selected = '';
                             echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
                     }
@@ -291,7 +291,7 @@ Class groups_metadata {
                 ?>
             </select>
         </div>
-        
+
         <div class="col-6">
             <label for="category">Catégorie de l'expé</label>
             <select name="category" id="category" >
@@ -327,9 +327,9 @@ Class groups_metadata {
     public function order_options(){
 
 
-                    for ($i=1992; $i < date("Y") + 2 ; $i++) { 
+                    for ($i=1992; $i < date("Y") + 2 ; $i++) {
                             $selected = '';
-                            if($i != 1993 && ( $i > 1998 || $i < 1995 ))
+                            if($i != 1993 && $i != 1995 && $i != 1997 && $i != 1998 )
                             echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
                     }
 
