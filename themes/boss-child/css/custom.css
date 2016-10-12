@@ -25,19 +25,22 @@ You're the boss, so have fun editing!
 
 
 
-/* Hide some element (need to add a class in some view) */
+/* Hide some element (sometime need to add a class in some view) */
 
-.hide{
+.hide,
+#nav-extras-groups-li,
+.numbers,
+.group-create-nav{
 	display:none !important;
 }
 
-/* Styling the feed */
+/* Styling the feed (activity) */
 #buddypress #item-body form#whats-new-form {
 	padding-top: 0px;
 }
 
 #buddypress div#subnav.item-list-tabs{
-	margin-bottom: 0px;
+	border-bottom: 1px solid rgba(0,0,0,0.11);
 }
 
 #buddypress #activity-stream > li:not(.load-newest):not(.load-more){
@@ -48,6 +51,60 @@ You're the boss, so have fun editing!
 	width: 97%;
 }
 
+/*Typography*/
+
+p,
+.entry-content ul,
+.entry-content li{
+/*	font-family: 'EB Garamond', Garamond, Times, serif;
+	font-size: 16px;
+	line-height: 1.33em;
+*/
+}
+
+h1.main-title,
+.item-title a{
+	font-family: Montserrat;
+}
+
+h1.main-title,
+.widget-title{
+	text-transform: uppercase;
+	font-size:48px !important;
+}
+
+.home-expe .widget-title{
+	font-size:36px !important;
+}
+
+/*Spacings*/
+#buddypress div#item-body{
+	padding-top:20px;
+}
+
+.activity-header.page-header{
+	padding:0px 70px !important;
+}
+
+
+/* Global Style */
+
+p {
+	margin-bottom: 0.9em;
+}
+ /* Captcha input form */
+.login form input #captcha_code.input{
+	color:#444 !important;
+}
+
+input#captcha_code{
+	background: rgba(0,0,0,0.15);
+}
+
+/*Background for content pages*/
+.panel-grid:nth-child(even){
+	background-color: transparent !important;
+}
 
 /*--------------------------------------------------------------
 2.0 - Responsive media queries (mobile styles)
@@ -56,7 +113,13 @@ You're the boss, so have fun editing!
 2.1 - MAXIMUM width of 720 pixels (phones landscape)
 --------------------------------------------------------------*/
 @media screen and (max-width: 720px) {
+	.mobil-hidden{
+		display: none !important;
+	}
 
+	.site{
+		min-height: initial;
+	}
 
 	/*
 	.just_an_example {
@@ -94,7 +157,9 @@ You're the boss, so have fun editing!
 2.3 - MINIMUM width of 721 pixels (tablets+)
 --------------------------------------------------------------*/
 @media screen and (min-width: 721px)  {
-
+	.mobil-only{
+		display:none; /* ceci permet de n'afficher des élements que en mode mobile, donc seulement en tablet et desktop*/
+	}
 
 	/*
 	.just_an_example {
@@ -114,6 +179,17 @@ You're the boss, so have fun editing!
 --------------------------------------------------------------*/
 @media screen and (min-width: 1040px)  {
 
+	/*Styling the home page slider*/
+	.bb-slider-wrapper,
+	.bb-slide,
+	.bb-slider-container .slide_content,
+	.bb-slider-container .slide_content_wrap {
+    	max-height: 300px !important;
+	}
+
+	.bb-slider-container .inner{
+
+	}
 
 	/*
 	.just_an_example {
