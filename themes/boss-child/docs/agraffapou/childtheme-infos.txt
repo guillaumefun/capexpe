@@ -1,0 +1,47 @@
+Hello,
+
+my name is Apou, i worked on the UI of Capexpe, about images, global style, typography and other design stuff.
+
+All actions are listed below:
+
+CSS Styles:
+-----------
+
+All custom styles are located in boss-child/css/custom.css
+
+Custom class are commented to explain the style in the file
+
+PHP View:
+-----
+
+All custom view are located in the plugin directory OF the child theme (and not in the plugin directory himself, to avoid to overwrite and lost modification by an update)
+
+	BuddyPress Group Extra
+	----------------------
+
+	directory: boss-child/bpge
+
+	This plugin displays extra options to manage groups, few options are useless, so we hide theme to avoid to disrupt users and avoid issues.
+
+	we modified 3 files in the /front directory:
+
+	WARNING: since the version 2.1.6 of Boss Theme, some arguments became deprecated, a backup of old files is located in bpge/front/deprecated
+
+		- extras_general.php: LINE 1 + 6 + 15 + 24 add some "hide" class to hide some paragraphs
+		- extras_pages_add_edit.php: LINE 22: activate the media-button to add an image in a page by the WYSYG editor
+		- extras_top_menu.php: LINE 8 + 10 + 22 + 38 + 51 + 53 + 69 + 71: add some "hide" classe to hide some buttons (deactive fields options)
+
+
+	BuddyPress
+	----------
+
+	directory: boss-child/buddypress
+
+	This plugin is the main plugin to transform Wordpress to a Community portal. A button are useless in the group view, so we hide it.
+
+	We modified one file in the /groups directory:
+
+	index.php: Line 48: Put the action line in comment to hide the seconde button creer une expe (FR). Already displays on the page (next to the title)
+
+
+
