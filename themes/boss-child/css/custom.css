@@ -30,7 +30,8 @@ You're the boss, so have fun editing!
 .hide,
 #nav-extras-groups-li,
 .numbers,
-.group-create-nav{
+.group-create-nav,
+.members-header.page-header{
 	display:none !important;
 }
 
