@@ -23,15 +23,15 @@ You're the boss, so have fun editing!
 1.0 - Global Styles
 --------------------------------------------------------------*/
 
-
-
 /* Hide some element (sometime need to add a class in some view) */
 
 .hide,
 #nav-extras-groups-li,
 .numbers,
 .group-create-nav,
-.members-header.page-header{
+.members-header.page-header,
+.entry-title,
+.home-expe .item-options{
 	display:none !important;
 }
 
@@ -109,6 +109,18 @@ input#captcha_code{
 /*Background for content pages*/
 .panel-grid:nth-child(even){
 	background-color: transparent !important;
+}
+
+.panel-grid:first-child,
+#pg-22-2{
+    padding-top:0px;
+}
+
+/*Styling Group Pages*/
+
+
+#primary #groups-list .item-avatar a{
+    width:100px;
 }
 
 /*--------------------------------------------------------------
