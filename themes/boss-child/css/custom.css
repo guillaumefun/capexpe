@@ -89,6 +89,10 @@ h1.main-title,
 
 /* Global Style */
 
+.entry-content a{
+	text-decoration: underline;
+}
+
 p {
 	margin-bottom: 0.9em;
 }
