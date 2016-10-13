@@ -94,6 +94,10 @@ h1.main-title,
 	text-decoration: underline;
 }
 
+#groups-stream li .item-title, #groups-list li .item-title a{
+	text-decoration: none !important;
+}
+
 p {
 	margin-bottom: 0.9em;
 }
