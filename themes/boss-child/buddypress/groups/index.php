@@ -45,7 +45,7 @@
 					<li id="groups-personal"><a href="<?php echo bp_loggedin_user_domain() . bp_get_groups_slug() . '/my-groups/'; ?>"><?php printf( __( 'My Groups <span>%s</span>', 'boss' ), bp_get_total_group_count_for_user( bp_loggedin_user_id() ) ); ?></a></li>
 				<?php endif; ?>
 
-				<?php do_action( 'bp_groups_directory_group_filter' ); ?>
+				<?php /*do_action( 'bp_groups_directory_group_filter' );*/ ?>
 
 				<?php do_action( 'bp_groups_directory_group_types' ); ?>
 
