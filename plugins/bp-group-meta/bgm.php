@@ -31,16 +31,11 @@ Class groups_metadata {
         add_action( 'groups_group_details_edited' , array( $this, 'admin_ui_save_meta'), 10, 1 );
 
         // Add search parameter
-        add_action( 'bp_before_directory_groups', array( $this, 'new_options' ) );
-        // add_action( 'bp_member_group_order_options', array( $this, 'new_options' ) );
-        // add_action( 'bp_groups_directory_order_options', array( $this, 'new_options' ) );
         add_filter( 'bp_ajax_querystring', array( $this, 'filter_ajax_querystring' ), 20, 2 );
-        add_action( 'bp_groups_directory_order_options', array( $this, 'order_options' ) );
+        add_action( 'bp_groups_directory_order_options', array( $this, 'new_options' ) );
 
         // Set default cover photo
         add_filter( "buddyboss_cover_photo_stock_pick_filename", array( $this, 'default_cover_photo' ) );
-
-
 
     }
 
@@ -198,7 +193,6 @@ Class groups_metadata {
     }
 
     public function save_meta_creation_step(  $group_id , $meta_name ){
-
         $new = htmlspecialchars($_POST[$meta_name]);
         groups_add_groupmeta( $group_id , $meta_name, $new);
 
@@ -210,8 +204,6 @@ Class groups_metadata {
         }
 
         return 0;
-
-
     }
 
     public function group_save_meta(){
@@ -230,144 +222,104 @@ Class groups_metadata {
         to check the object is groups, else simply return the querystring and stop the process */
         if( $object != 'groups' )
             return $querystring;
+
         // Let's rebuild the querystring as an array to ease the job
         $defaults = array(
-            'type'            => 'active',
-            'action'          => 'active',
-            'scope'           => 'all',
-            'page'            => 1,
-            'user_id'         => 0,
-            'search_terms'    => '',
-            'exclude'         => false,
+          'type'            => 'active',
+          'action'          => 'active',
+          'scope'           => 'all',
+          'page'            => 1,
+          'user_id'         => 0,
+          'search_terms'    => '',
+          'exclude'         => false,
         );
         $bpm_querystring = wp_parse_args( $querystring, $defaults );
-        /* if your featured option has not been requested
-        simply return the querystring to stop the process
-        */
-        if( $bpm_querystring['type'] == 'active' || $bpm_querystring['type'] == 'popular' || $bpm_querystring['type'] == 'newest' || $bpm_querystring['type'] == 'alphabetical')
-            return $querystring;
-        /* this is your meta_query */
-        if(preg_match('/^[0-9]+$/', $bpm_querystring['type'])){
 
-            $bpm_querystring['meta_query'] = array(
-                array(
-                    'key' => 'year',
-                    'value' => $bpm_querystring['type'],
-                    'type' => 'numeric',
-                    'compare' => '='
-                )
-            );
+        /* Prepare the meta-query using extras arguments from the AJAX request */
+        $extras = wp_parse_args($_POST['extras']);
+        $meta_query = [];
 
-        }else{
-            $bpm_querystring['meta_query'] = array(
-
-                array(
-                    'key' => 'category',
-                    'value' => $bpm_querystring['type'],
-                    'compare' => '='
-                )
-            );
+        /* Check if a date was selected */
+        if($extras['year'] && preg_match('/^[0-9]+$/', $extras['year'])){
+          array_push($meta_query, array(
+            'key' => 'year',
+            'value' => intval($extras['year']),
+            'type' => 'numeric',
+            'compare' => '='
+            )
+          );
         }
 
-        // using a filter will help other plugins to eventually extend this feature
+        /* Check if a category was selected */
+        if ($extras['category'] && strpos($extras['category'], 'Toutes') === false) {
+          array_push($meta_query, array(
+            'key' => 'category',
+            'value' => sanitize_text_field($extras['category']),
+            'compare' => '='
+            )
+          );
+        }
+
+        /* If there is at least one meta-query, we pass it further along */
+        if (count($meta_query)>0) {
+          $bpm_querystring['meta_query'] = $meta_query;
+        }
+
+        /* Using a filter will help other plugins to eventually extend this feature */
         return apply_filters( 'bpm_filter_ajax_querystring', $bpm_querystring, $querystring );
     }
 
     public function new_options(){
+        ?>
+
+      </select>
+    </li>
+
+    <li id="groups-year-select" class="filter">
+      <label for="groups-year">Ann�e de l'exp�:</label>
+      <select name="year" id="groups-year" >
+        <option >Toutes années</option>
+        <?php
+
+        for ($i=1990; $i < date("Y") + 5 ; $i++) {
+          $selected = '';
+          echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
+        }
 
         ?>
-        <!-- <div class="row filters">
-        <div class="col-6">
-            <label for="year" >Année de l'expé</label>
-            <select name="year" id="year" >
-                    <option >Toutes années</option>
-                <?php
+      </select>
+    </li>
 
-                    for ($i=1990; $i < date("Y") + 5 ; $i++) {
-                            $selected = '';
-                            echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
-                    }
-
-                ?>
-            </select>
-        </div>
-
-        <div class="col-6">
-            <label for="category">Catégorie de l'expé</label>
-            <select name="category" id="category" >
-                    <option >Toutes catégories</option>
-                    <option <?php if ( '' == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
-                    <option <?php if ( '' == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
-                    <option <?php if ( '' == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
-                    <option <?php if ( '' == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
-                    <option <?php if ( '' == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
-                    <option <?php if ( '' == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
-                    <option <?php if ( '' == 'snowkite') echo ' selected="selected"'; ?> value="snowkite" >Snow-kite</option>
-                    <option <?php if ( '' == 'parapente') echo ' selected="selected"'; ?> value="parapente" >Parapente</option>
-                    <option <?php if ( '' == 'randonordique') echo ' selected="selected"'; ?> value="randonordique" >Randonnée nordique</option>
-                    <option <?php if ( '' == 'skifond') echo ' selected="selected"'; ?> value="skifond" >Ski de fond</option>
-                    <option <?php if ( '' == 'skipiste') echo ' selected="selected"'; ?> value="skipiste" >Ski de piste</option>
-                    <option <?php if ( '' == 'skirando') echo ' selected="selected"'; ?> value="skirando" >Ski de randonnée</option>
-                    <option <?php if ( '' == 'speleo') echo ' selected="selected"'; ?> value="speleo" >Spéléologie</option>
-                    <option <?php if ( '' == 'trek') echo ' selected="selected"'; ?> value="trek" >Trekking</option>
-                    <option <?php if ( '' == 'velo') echo ' selected="selected"'; ?> value="velo" >Vélo</option>
-                    <option <?php if ( '' == 'voile') echo ' selected="selected"'; ?> value="voile" >Voile</option>
-
-                </select>
-
-            </div>
-        </div> -->
-
+    <li id="groups-category-select" class="filter">
+      <label for="groups-category">Catégorie de l'expé</label>
+      <select name="category" id="groups-category" >
+        <option >Toutes catégories</option>
+        <option <?php if ( '' == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
+        <option <?php if ( '' == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
+        <option <?php if ( '' == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
+        <option <?php if ( '' == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
+        <option <?php if ( '' == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
+        <option <?php if ( '' == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
+        <option <?php if ( '' == 'snowkite') echo ' selected="selected"'; ?> value="snowkite" >Snow-kite</option>
+        <option <?php if ( '' == 'parapente') echo ' selected="selected"'; ?> value="parapente" >Parapente</option>
+        <option <?php if ( '' == 'randonordique') echo ' selected="selected"'; ?> value="randonordique" >Randonnée nordique</option>
+        <option <?php if ( '' == 'skifond') echo ' selected="selected"'; ?> value="skifond" >Ski de fond</option>
+        <option <?php if ( '' == 'skipiste') echo ' selected="selected"'; ?> value="skipiste" >Ski de piste</option>
+        <option <?php if ( '' == 'skirando') echo ' selected="selected"'; ?> value="skirando" >Ski de randonnée</option>
+        <option <?php if ( '' == 'speleo') echo ' selected="selected"'; ?> value="speleo" >Spéléologie</option>
+        <option <?php if ( '' == 'trek') echo ' selected="selected"'; ?> value="trek" >Trekking</option>
+        <option <?php if ( '' == 'velo') echo ' selected="selected"'; ?> value="velo" >Vélo</option>
+        <option <?php if ( '' == 'voile') echo ' selected="selected"'; ?> value="voile" >Voile</option>
 
         <?php
-
-
-    }
-
-    public function order_options(){
-
-
-                    for ($i=1992; $i < date("Y") + 2 ; $i++) {
-                            $selected = '';
-                            if($i != 1993 && $i != 1995 && $i != 1997 && $i != 1998 )
-                            echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
-                    }
-
-                ?>
-                    <option <?php if ( '' == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
-                    <option <?php if ( '' == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
-                    <option <?php if ( '' == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
-                    <option <?php if ( '' == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
-                    <option <?php if ( '' == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
-                    <option <?php if ( '' == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
-                    <option <?php if ( '' == 'snowkite') echo ' selected="selected"'; ?> value="snowkite" >Snow-kite</option>
-                    <option <?php if ( '' == 'parapente') echo ' selected="selected"'; ?> value="parapente" >Parapente</option>
-                    <option <?php if ( '' == 'randonordique') echo ' selected="selected"'; ?> value="randonordique" >Randonnée nordique</option>
-                    <option <?php if ( '' == 'skifond') echo ' selected="selected"'; ?> value="skifond" >Ski de fond</option>
-                    <option <?php if ( '' == 'skipiste') echo ' selected="selected"'; ?> value="skipiste" >Ski de piste</option>
-                    <option <?php if ( '' == 'skirando') echo ' selected="selected"'; ?> value="skirando" >Ski de randonnée</option>
-                    <option <?php if ( '' == 'speleo') echo ' selected="selected"'; ?> value="speleo" >Spéléologie</option>
-                    <option <?php if ( '' == 'trek') echo ' selected="selected"'; ?> value="trek" >Trekking</option>
-                    <option <?php if ( '' == 'velo') echo ' selected="selected"'; ?> value="velo" >Vélo</option>
-                    <option <?php if ( '' == 'voile') echo ' selected="selected"'; ?> value="voile" >Voile</option>
-
-        <?php
-
     }
 
     public function default_cover_photo(){
-
         $category = groups_get_groupmeta( bp_get_group_id(), 'category');
-
         return $category . '.png';
-
     }
-
-
-
 }
 
 New groups_metadata();
-
 
 ?>
