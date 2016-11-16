@@ -28,13 +28,20 @@ jq(document).ready( function() {
 
 		/* Not sure what this it */
 		template = null;
+		extra = new Array();
 
 		/* Filter is the first select box (original one) */
 		filter = jq('#groups-order-by').val();
 
-		/* We also pickup the year and category values */
-		year     = jq('#groups-year').val();
-		category = jq('#groups-category').val();
+		/* We pickup the year value if selected*/
+		if (jq('#groups-year').prop('selectedIndex') >0 ) {
+			extra['year'] = jq('#groups-year').val();
+		}
+
+		/* We pickup the category value if selected*/
+		if (jq('#groups-category').prop('selectedIndex') >0 ) {
+			extra['category'] = jq('#groups-category').val();
+		}
 
 		/* If a search term is used, we take it into account */
 		search_terms = false;
@@ -42,15 +49,42 @@ jq(document).ready( function() {
 			search_terms = jq('.dir-search input').val();
 		}
 
-		/* Bundle the extra data. */
-		extra = {
-			'year': year,
-			'category': category
-		}
-
 		/* Send the AJAX request */
-		bp_filter_request( object, filter, scope, 'div.' + object, search_terms, 1, extra , null, template );
+		bp_filter_request( object, filter, scope, 'div.' + object, search_terms, 1, arrayToQueryString(extra) , null, template );
 
 		return false;
 	});
+
+	bp_init_dropdowns();
+
 });
+
+function bp_init_dropdowns(objects) {
+	if ( null != jq.cookie('bp-groups-extras')) {
+		extra = parseQuery(jq.cookie('bp-groups-extras'));
+		if (null != extra['year']) {
+			jq('li#groups-year-select select option[value="' + extra + '"]').prop( 'selected', true );
+		}
+		if (null != extra['category']) {
+			jq('li#groups-year-category select option[value="' + extra + '"]').prop( 'selected', true );
+		}
+	}
+}
+
+function arrayToQueryString(array_in){
+	var out = new Array();
+	for(var key in array_in){
+		out.push(key + '=' + encodeURIComponent(array_in[key]));
+	}
+	return out.join('&');
+}
+
+function parseQuery(qstr) {
+	var query = {};
+	var a = qstr.split('&');
+	for (var i = 0; i < a.length; i++) {
+		var b = a[i].split('=');
+		query[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+	}
+	return query;
+}

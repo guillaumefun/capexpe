@@ -235,9 +235,8 @@ Class groups_metadata {
         );
         $bpm_querystring = wp_parse_args( $querystring, $defaults );
 
-
         /* Prepare the meta-query using extras arguments from the AJAX request */
-        $extras = $_POST['extras'];
+        $extras = wp_parse_args($_POST['extras']);
         $meta_query = [];
 
         /* Check if a date was selected */
