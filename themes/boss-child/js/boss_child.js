@@ -63,10 +63,10 @@ function bp_init_dropdowns(objects) {
 	if ( null != jq.cookie('bp-groups-extras')) {
 		extra = parseQuery(jq.cookie('bp-groups-extras'));
 		if (null != extra['year']) {
-			jq('li#groups-year-select select option[value="' + extra + '"]').prop( 'selected', true );
+			jq('li#groups-year-select select option[value="' + extra['year'] + '"]').prop( 'selected', true );
 		}
 		if (null != extra['category']) {
-			jq('li#groups-year-category select option[value="' + extra + '"]').prop( 'selected', true );
+			jq('li#groups-category-select select option[value="' + extra['category'] + '"]').prop( 'selected', true );
 		}
 	}
 }
