@@ -241,7 +241,7 @@ Class groups_metadata {
         $meta_query = [];
 
         /* Check if a date was selected */
-        if(preg_match('/^[0-9]+$/', $extras['year'])){
+        if($extras['year'] && preg_match('/^[0-9]+$/', $extras['year'])){
           array_push($meta_query, array(
             'key' => 'year',
             'value' => intval($extras['year']),
@@ -252,7 +252,7 @@ Class groups_metadata {
         }
 
         /* Check if a category was selected */
-        if (strpos($extras['category'], 'Toutes') === false) {
+        if ($extras['category'] && strpos($extras['category'], 'Toutes') === false) {
           array_push($meta_query, array(
             'key' => 'category',
             'value' => sanitize_text_field($extras['category']),
