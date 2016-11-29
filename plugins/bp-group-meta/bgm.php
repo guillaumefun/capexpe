@@ -85,6 +85,7 @@ Class groups_metadata {
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
+                    <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'packraft') echo ' selected="selected"'; ?> value="packraft" >Packraft</option>
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
                     <option <?php if ( groups_get_groupmeta( $item->id, 'category') == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
@@ -167,6 +168,7 @@ Class groups_metadata {
                     <option <?php if ( $category == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
                     <option <?php if ( $category == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
                     <option <?php if ( $category == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
+                    <option <?php if ( $category == 'packraft') echo ' selected="selected"'; ?> value="packraft" >Packraft</option>
                     <option <?php if ( $category == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
                     <option <?php if ( $category == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
                     <option <?php if ( $category == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
@@ -299,6 +301,7 @@ Class groups_metadata {
         <option <?php if ( '' == 'autre') echo ' selected="selected"'; ?> value="autre" >Autre</option>
         <option <?php if ( '' == 'alpi') echo ' selected="selected"'; ?> value="alpi" >Alpinisme</option>
         <option <?php if ( '' == 'kayak') echo ' selected="selected"'; ?> value="kayak" >Canoé-kayak</option>
+        <option <?php if ( '' == 'packraft') echo ' selected="selected"'; ?> value="packraft" >Packraft</option>
         <option <?php if ( '' == 'canyoning') echo ' selected="selected"'; ?> value="canyoning" >Canyoning</option>
         <option <?php if ( '' == 'cascadedeglace') echo ' selected="selected"'; ?> value="cascadedeglace" >Cascade de glace</option>
         <option <?php if ( '' == 'escalade') echo ' selected="selected"'; ?> value="escalade" >Escalade</option>
