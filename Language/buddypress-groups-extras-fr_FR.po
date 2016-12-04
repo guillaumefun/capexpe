@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: BuddyPress Groups Extras\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-07 00:58+0200\n"
-"PO-Revision-Date: 2016-10-05 15:30+0200\n"
+"PO-Revision-Date: 2016-12-04 13:06+0100\n"
 "Last-Translator: slaFFik <slava.abakumov@gmail.com>\n"
 "Language-Team: slaFFik <slaffik@list.ru>\n"
 "Language: fr_FR\n"
@@ -13,7 +13,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;gettext;gettext_noop;_e\n"
 "X-Poedit-Basepath: W:/OpenServer/domains/ovi/pro/wp-content/plugins/"
 "buddypress-groups-extras-pro\n"
-"X-Generator: Poedit 1.8.7\n"
+"X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: W:/OpenServer/domains/ovi/pro/wp-content/plugins/"
 "buddypress-groups-extras-pro\n"
 
@@ -107,16 +107,16 @@ msgstr ""
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras-pro-search/bpge-search.php:77
 msgid "Found in Group Pages:"
-msgstr "Expé Pages &rarr; Gestion des pages"
+msgstr "Trouvés dans les Page de l’Expé"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras-pro-search/bpge-search.php:98
 msgid "Found in Group Fields:"
-msgstr "Expé Extras &rarr; Gestion des champs"
+msgstr "Trouvés dans les champs de l’expo"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/bpge.php:112
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/bpge.php:113
 msgid "BP Groups Extras"
-msgstr "BP Expé Extras"
+msgstr "Extras d’Expé"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin.php:47
 #, fuzzy
@@ -180,7 +180,7 @@ msgstr ""
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin.php:329
 msgid "BuddyPress Groups Extras"
-msgstr "BuddyPress Expés Extras"
+msgstr "Extras de BuddyPress Expés"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin.php:333
 msgid "Extend Your Groups"
@@ -265,7 +265,7 @@ msgid ""
 msgstr ""
 "Si vous avez mis à jour Buddypress Group Extras depuis n&acute;importe "
 "quelle version antérieure à la version 3.4, et si vous souhaitez tout "
-"préserver vos contenus (tels les les champs de groupes, etc.) utilisez les "
+"préserver vos contenus (tels les les champs d’Expé, etc.) utilisez les "
 "options d&acute;importation ci dessous."
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin_tabs/general.php:102
@@ -325,7 +325,7 @@ msgstr "Tout effacer"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin_tabs/groups.php:16
 msgid "Allowed Groups"
-msgstr "Expés autorisés"
+msgstr "Expés autorisées"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/admin_tabs/poll.php:16
 msgid "Poll"
@@ -448,7 +448,7 @@ msgstr ""
 "Malheureusement, une erreur est survenue lors de l&acute;application de cet "
 "ensemble de champs. Merci de recommencer ou de recréer cet ensemble. "
 "Attention, si vous appliquez cet ensemble de champs une seconde fois, il "
-"aparaîtront deux fois pour les Exp&és qui en sont déjà pourvu."
+"aparaîtront deux fois pour les Expés qui en sont déjà pourvues."
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/core/helpers.php:47
 msgid "Group Extras &rarr; General Settings"
@@ -548,7 +548,7 @@ msgstr "Editer"
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/views/admin/groups_list.php:2
 msgid "Which groups do you allow to create custom fields and pages for?"
 msgstr ""
-"Quelless Expés autorisez-vous à créer des champs et des pages additionnels ?"
+"Quelles Expés autorisez-vous à créer des champs et des pages additionnels ?"
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/views/admin/groups_list.php:13
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/views/admin/groups_list.php:38
@@ -813,14 +813,14 @@ msgid ""
 "display problems."
 msgstr ""
 "Vous pouvez réordonner les liens de navigation de cette Expé. Le premier "
-"élément deviendra la page d&acute;accueil du groupe. Enregistrez après avoir "
+"élément deviendra la page d&acute;accueil de l’Expé. Enregistrez après avoir "
 "réordonné.<br />Merci de NE PAS mettre la page de Gestion de l’Expé en "
 "premier - cela risque de causer des problèmes d&acute;affichage."
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/views/front/extras_general.php:62
 msgid "Rename the Home group page - Activity (for example) is far better."
 msgstr ""
-"Renommer la page d&acute;accueil de l’Expé - Activité (par exemple) est "
+"Renommer la page d&acute;accueil de l’Expé en Activités (par exemple) est "
 "probablement plus parlant."
 
 #: W:\OpenServer\domains\ovi\bpge\wp-content\plugins\buddypress-groups-extras/views/front/extras_general.php:69
