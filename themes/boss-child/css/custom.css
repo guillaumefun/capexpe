@@ -71,7 +71,7 @@ h1.main-title,
 h1.main-title,
 .widget-title{
 	text-transform: uppercase;
-	font-size:48px !important;
+	font-size:48px;
 }
 
 .home-expe .widget-title{
@@ -185,6 +185,11 @@ input#captcha_code{
 2.2 - MAXIMUM width of 350 pixels (phones portrait)
 --------------------------------------------------------------*/
 @media screen and (max-width: 350px) {
+	h1.main-title,
+	.widget-title{
+	  text-transform: uppercase;
+	  font-size:21px !important;
+	}
 
 
 	/*
