@@ -6,7 +6,7 @@
 
     <div class="filters">
         <div class="row">
-            <div class="col-6">
+            <div class="col-6 expes-filter">
                 <div class="item-list-tabs" role="navigation">
                     <ul>
                         <li id="groups-order-select" class="filter">
@@ -25,7 +25,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-6">
+            <div class="col-6 expes-search">
                 <div id="group-dir-search" class="dir-search" role="search">
                     <?php bp_directory_groups_search_form(); ?>
                 </div><!-- #group-dir-search -->
