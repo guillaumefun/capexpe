@@ -29,14 +29,17 @@
 </p>
 
 <p>
-	<label
-		for="group_extras_display"><?php echo sprintf( __( 'Do you want to make <strong>"%s"</strong> page public (extra group pages will be displayed there)?', 'buddypress-groups-extras' ), $gpages_item_name ); ?></label>
-	<input type="radio" value="public" <?php echo checked( $bp->groups->current_group->extras['display_gpages'], 'public', false ); ?>
-	       name="group-gpages-display"> <?php _e( 'Show it', 'buddypress-groups-extras' ); ?><br/>
-	<input type="radio" value="private" <?php echo checked( $bp->groups->current_group->extras['display_gpages'], 'private', false ); ?>
-	       name="group-gpages-display"> <?php _e( 'Hide it', 'buddypress-groups-extras' ); ?>
+    <label
+        for="group_extras_display"><?php echo sprintf( __( 'Do you want to make <strong>"%s"</strong> page public (extra group pages will be displayed there)?', 'buddypress-groups-extras' ), $gpages_item_name ); ?></label>
+<!-- commented and replaced by Dom on December 28th 2016: bypass default value and set it to checked
+    <input type="radio" value="public" <?php echo checked( $bp->groups->current_group->extras['display_gpages'], 'public', false ); ?>
+	         name="group-gpages-display"> <?php _e( 'Show it', 'buddypress-groups-extras' ); ?><br/>
+-->
+		<input type="radio" value="public" checked="checked"
+	         name="group-gpages-display"> <?php _e( 'Show it', 'buddypress-groups-extras' ); ?><br/>
+    <input type="radio" value="private" <?php echo checked( $bp->groups->current_group->extras['display_gpages'], 'private', false ); ?>
+           name="group-gpages-display"> <?php _e( 'Hide it', 'buddypress-groups-extras' ); ?>
 </p>
-
 <hr/>
 
 <label><?php _e( 'You can reorder here all navigation links in this group. The first item will become a landing page for this group. Save changes after reordering.<br />Please do NOT make Admin/Manage pages on first place - that will cause display problems.', 'buddypress-groups-extras' ); ?></label>
