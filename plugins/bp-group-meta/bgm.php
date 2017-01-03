@@ -66,7 +66,7 @@ Class groups_metadata {
                 <select name="year" id="year" >
                     <?php
 
-                        for ($i=1990; $i < date("Y") + 5 ; $i++) {
+                        for ($i=1992; $i < date("Y") + 2 ; $i++) {
                             $selected = '';
                             if(groups_get_groupmeta( $item->id, 'year') != '' ){
                                 if(groups_get_groupmeta( $item->id, 'year') == $i) $selected = "selected";
@@ -149,7 +149,7 @@ Class groups_metadata {
             <select name="year" id="year" >
                 <?php
 
-                    for ($i=1990; $i < date("Y") + 5 ; $i++) {
+                    for ($i=1992; $i < date("Y") + 2 ; $i++) {
                             $selected = '';
                             if(groups_get_groupmeta( $id, 'year') != '' ){
                                 if(groups_get_groupmeta( $id, 'year') == $i) $selected = "selected";
@@ -285,7 +285,7 @@ Class groups_metadata {
         <option >Toutes années</option>
         <?php
 
-        for ($i=1990; $i < date("Y") + 5 ; $i++) {
+        for ($i=1992; $i < date("Y") + 2 ; $i++) {
           $selected = '';
           echo '<option value="' . $i . '" ' . $selected . '>' . $i . '</option>';
         }
