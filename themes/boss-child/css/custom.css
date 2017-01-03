@@ -90,16 +90,8 @@ h1.main-title,
 
 /* Global Style */
 
-.col-6.expes-filter {
-    width: 66% !important;
-}
 .col-6.expes-filter .item-list-tabs ul li .buddyboss-select{
 	margin-right:3px;
-
-}
-
-.col-6.expes-search {
-    width: 34% !important;
 }
 
 .entry-content a{
@@ -168,6 +160,30 @@ input#captcha_code{
 		min-height: initial;
 	}
 
+	#buddypress div.item-list-tabs ul li.filter		margin: 0 0 10px 0;
+	}
+
+	.col-6.expes-search,
+	.col-6.expes-filter,
+	#buddypress div.item-list-tabs ul li.filter select,
+	.buddyboss-select,
+	#buddypress div.dir-search{
+		width: 100%;
+	}
+
+	#buddypress div.dir-search{
+		margin-top: 10px;
+	}
+
+	.col-6.expes-filter .item-list-tabs ul li .buddyboss-select,
+	#groups-order-select .buddyboss-select{
+		margin-bottom: 5px;
+	}
+
+	.directory #buddypress div.item-list-tabs ul li:not(#members-order-select):not(#groups-order-select):not(#blogs-order-select){
+		border:none;
+	}
+
 	/*
 	.just_an_example {
 		color: black;
@@ -208,9 +224,26 @@ input#captcha_code{
 /*--------------------------------------------------------------
 2.3 - MINIMUM width of 721 pixels (tablets+)
 --------------------------------------------------------------*/
-@media screen and (min-width: 721px)  {
+@media screen and (min-width: 721px) and (max-width: 1039px) {
 	.mobil-only{
 		display:none; /* ceci permet de n'afficher des élements que en mode mobile, donc seulement en tablet et desktop*/
+	}
+
+	.col-6.expes-search,
+	.col-6.expes-filter,
+	#buddypress div.item-list-tabs ul li.filter select,
+	.buddyboss-select,
+	#buddypress div.dir-search{
+		width: 100%;
+	}
+
+	#buddypress div.dir-search{
+		margin-top: 10px;
+	}
+
+	.col-6.expes-filter .item-list-tabs ul li .buddyboss-select,
+	#groups-order-select .buddyboss-select{
+		margin-bottom: 5px;
 	}
 
 	/*
@@ -239,8 +272,17 @@ input#captcha_code{
     	max-height: 300px !important;
 	}
 
-	.bb-slider-container .inner{
+	.col-6.expes-filter {
+    	width: 66% !important;
+	}
 
+	.col-6.expes-search {
+    	width: 34% !important;
+	}
+
+	#buddypress div.item-list-tabs ul li.filter select,
+	.buddyboss-select{
+		width: auto !important;
 	}
 
 	/*
