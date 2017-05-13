@@ -221,6 +221,35 @@ form#mpp-whats-new-form textarea{
 --------------------------------------------------------------*/
 @media screen and (max-width: 350px) {
 
+
+	h1.main-title,
+	.widget-title{
+		text-transform: uppercase;
+		font-size:18px !important;;
+	}
+	.home-expe .widget-title{
+		font-size:18px !important;
+	}
+
+	.btn, button, input[type="submit"], input[type="button"]:not(.button-small), input[type="reset"], article.post-password-required input[type="submit"], li.bypostauthor cite span, a.button, #create-group-form .remove, #buddypress ul.button-nav li a, #buddypress div.generic-button a, #buddypress .comment-reply-link, .entry-title a.button, span.create-a-group > a, #buddypress div.activity-comments form input[disabled], .woocommerce #respond input#submit.alt, .woocommerce a.button.alt, .woocommerce button.button.alt, .woocommerce input.button.alt, .woocommerce #respond input#submit.alt:hover, .woocommerce a.button.alt:hover, .woocommerce button.button.alt:hover, .woocommerce input.button.alt:hover {
+    color: #fff;
+    font-size: 12px;
+    font-family: inherit;
+    letter-spacing: 1.2px;
+    padding: 8px 4px 8px;
+    background-color: #4dcadd;
+    border-radius: 4px;
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    box-sizing: border-box;
+    border: none;
+    line-height: 14px;
+    cursor: pointer;
+    text-shadow: none;
+}
 	/*
 	.just_an_example {
 		color: black;
