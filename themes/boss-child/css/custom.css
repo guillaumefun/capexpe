@@ -134,8 +134,11 @@ input#captcha_code{
 /*MediaPress Gallery*/
 
 .mpp-container #mpp-whats-new-avatar a img.avatar.user-4-avatar.avatar-150.photo,
+.mpp-container #mpp-whats-new-avatar a img.avatar.user-3-avatar.avatar-150.photo,
 .mpp-lightbox-content .mpp-lightbox-activity-container .mpp-lightbox-media-uploader-avatar a img.avatar.user-3-avatar.avatar-150.photo,
-.mpp-lightbox-content .mpp-lightbox-activity-container .mpp-activity.mpp-media-activity form #mpp-whats-new-avatar a img.avatar.user-4-avatar.avatar-150.photo {
+.mpp-lightbox-content .mpp-lightbox-activity-container .mpp-activity.mpp-media-activity form #mpp-whats-new-avatar a img.avatar.user-4-avatar.avatar-150.photo,
+.mpp-lightbox-content .mpp-lightbox-activity-container .mpp-activity.mpp-media-activity form #mpp-whats-new-avatar a img.avatar.user-3-avatar.avatar-150.photo {
+
 	width: 44px;
 	height: auto;
 	border-radius:22px;
@@ -143,6 +146,10 @@ input#captcha_code{
 .mpp-lightbox-content .mpp-lightbox-activity-container .mpp-activity.mpp-media-activity form #mpp-whats-new-content #mpp-whats-new-textarea textarea#mpp-whats-new,
 .mpp-lightbox-content .mpp-lightbox-activity-container .mpp-activity.mpp-media-activity form #mpp-whats-new-content #mpp-whats-new-options{
 	height:90px !important;
+}
+form#mpp-whats-new-form textarea{
+	min-height: 100px;
+	width: 100%;
 }
 
 /*--------------------------------------------------------------
@@ -161,6 +168,7 @@ input#captcha_code{
 		min-height: initial;
 	}
 
+
 	h1.main-title,
 	.widget-title{
 		text-transform: uppercase;
@@ -170,7 +178,8 @@ input#captcha_code{
 		font-size:21px !important;
 	}
 
-	#buddypress div.item-list-tabs ul li.filter		margin: 0 0 10px 0;
+	#buddypress div.item-list-tabs ul li.filter{
+		margin: 0 0 10px 0;
 	}
 
 	.col-6.expes-search,
