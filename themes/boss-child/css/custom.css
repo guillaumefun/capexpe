@@ -152,12 +152,22 @@ input#captcha_code{
 2.1 - MAXIMUM width of 720 pixels (phones landscape)
 --------------------------------------------------------------*/
 @media screen and (max-width: 720px) {
-	.mobil-hidden{
+	/*.mobil-hidden{
 		display: none !important;
 	}
+	*/
 
 	.site{
 		min-height: initial;
+	}
+
+	h1.main-title,
+	.widget-title{
+		text-transform: uppercase;
+		font-size:21px !important;;
+	}
+	.home-expe .widget-title{
+		font-size:21px !important;
 	}
 
 	#buddypress div.item-list-tabs ul li.filter		margin: 0 0 10px 0;
@@ -201,12 +211,6 @@ input#captcha_code{
 2.2 - MAXIMUM width of 350 pixels (phones portrait)
 --------------------------------------------------------------*/
 @media screen and (max-width: 350px) {
-	h1.main-title,
-	.widget-title{
-	  text-transform: uppercase;
-	  font-size:21px !important;
-	}
-
 
 	/*
 	.just_an_example {
@@ -225,9 +229,19 @@ input#captcha_code{
 2.3 - MINIMUM width of 721 pixels (tablets+)
 --------------------------------------------------------------*/
 @media screen and (min-width: 721px) and (max-width: 1039px) {
-	.mobil-only{
-		display:none; /* ceci permet de n'afficher des élements que en mode mobile, donc seulement en tablet et desktop*/
+	/*.mobil-only{
+		display:none;
 	}
+		*/
+	h1.main-title,
+		.widget-title{
+		  text-transform: uppercase;
+		  font-size:21px !important;
+		}
+
+	.home-expe .widget-title{
+			font-size:21px !important;
+		}
 
 	.col-6.expes-search,
 	.col-6.expes-filter,
@@ -236,6 +250,7 @@ input#captcha_code{
 	#buddypress div.dir-search{
 		width: 100%;
 	}
+
 
 	#buddypress div.dir-search{
 		margin-top: 10px;
@@ -264,12 +279,22 @@ input#captcha_code{
 --------------------------------------------------------------*/
 @media screen and (min-width: 1040px)  {
 
+
+	.mobil-only{
+		display:none; /* only on mobile and tablets*/
+	}
+
+
 	/*Styling the home page slider*/
 	.bb-slider-wrapper,
 	.bb-slide,
 	.bb-slider-container .slide_content,
 	.bb-slider-container .slide_content_wrap {
     	max-height: 300px !important;
+	}
+
+	.home-expe .widget-title{
+		font-size:36px !important;
 	}
 
 	.col-6.expes-filter {

@@ -48,7 +48,7 @@ function boss_child_theme_scripts_styles()
    * Styles
    */
   wp_enqueue_style( 'boss-child-custom', get_stylesheet_directory_uri().'/css/custom.css' );
- 
+
   /*
    * Scripts
    */
@@ -86,6 +86,16 @@ remove_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'buddyboss_
 remove_filter( 'bp_before_groups_cover_image_settings_parse_args', 'buddyboss_cover_image_settings', 10, 1 );
 add_filter( 'bp_before_xprofile_cover_image_settings_parse_args', 'bb_cover_image_settings', 10, 1 );
 add_filter( 'bp_before_groups_cover_image_settings_parse_args', 'bb_cover_image_settings', 10, 1 );
+
+// add cookies to allow filtering of profile info e.g. expes
+function set_user_cookie() {
+    if ( !is_admin() && !isset($_COOKIE['bp-groups-scope'])) {
+        setcookie( 'bp-groups-scope', personal, time()+3600*24*100, COOKIEPATH, COOKIE_DOMAIN, false);
+    }
+}
+
+add_action( 'init', 'set_user_cookie');
+
 
 
 ?>
